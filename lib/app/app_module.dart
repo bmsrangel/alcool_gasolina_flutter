@@ -1,3 +1,4 @@
+import 'package:alcool_gasolina/app/shared/services/local_storage_service.dart';
 import 'package:alcool_gasolina/app/app_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,9 @@ class AppModule extends ModuleWidget {
       ];
 
   @override
-  List<Dependency> get dependencies => [];
+  List<Dependency> get dependencies => [
+        Dependency((i) => LocalStorageService()),
+      ];
 
   @override
   Widget get view => AppWidget();

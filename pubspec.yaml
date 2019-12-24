@@ -17,6 +17,9 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  path_provider: ^1.5.1
+  hive: ^1.2.0
+  shared_preferences: ^0.5.6
   google_fonts: ^0.2.0
   flutter_masked_text: ^0.8.0
   dio: ^3.0.7
