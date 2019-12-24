@@ -33,7 +33,6 @@ class HomeBloc extends BlocBase {
 
   _init() async {
     String consumoEtanol = await localStorageService.getConsumoEtanol();
-    print(consumoEtanol);
     String consumoGasolina = await localStorageService.getConsumoGasolina();
 
     if (consumoEtanol != null) {

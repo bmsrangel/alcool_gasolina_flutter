@@ -31,10 +31,7 @@ class LocalStorageService extends Disposable {
   Future<String> getConsumoEtanol() async {
     final box = await completer.future;
     try {
-      print("entrou");
-      String consumo = box.get("consumoEtanol");
-      print(consumo);
-      return consumo;
+      return box.get("consumoEtanol");
       // return localStorage.getString("consumoEtanol");
     } catch (e) {
       return null;
