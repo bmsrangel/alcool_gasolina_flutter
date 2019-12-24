@@ -3,7 +3,7 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 class EntradasWidget extends StatelessWidget {
   final String combustivel;
-  final MaskedTextController controller;
+  final MoneyMaskedTextController controller;
   final Color cor;
   final FocusNode focusController;
   const EntradasWidget(

@@ -50,8 +50,11 @@ class MostrarConsumoWidget extends StatelessWidget {
     );
   }
 
-  Widget entradasConsumo(String combustivel, MaskedTextController controller,
-      FocusNode focusController, Color cor) {
+  Widget entradasConsumo(
+      String combustivel,
+      MoneyMaskedTextController controller,
+      FocusNode focusController,
+      Color cor) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(

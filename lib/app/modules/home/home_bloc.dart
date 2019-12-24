@@ -1,4 +1,3 @@
-import 'package:alcool_gasolina/app/modules/home/home_module.dart';
 import 'package:alcool_gasolina/app/shared/services/local_storage_service.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +7,27 @@ import 'package:rxdart/rxdart.dart';
 class HomeBloc extends BlocBase {
   final LocalStorageService localStorageService;
 
-  MaskedTextController gasolina$ = MaskedTextController(mask: "R\$0,00");
-  MaskedTextController etanol$ = MaskedTextController(mask: "R\$0,00");
+  MoneyMaskedTextController gasolina$ = MoneyMaskedTextController(
+    leftSymbol: "R\$",
+    precision: 2,
+    decimalSeparator: ",",
+    thousandSeparator: ".",
+  );
+  MoneyMaskedTextController etanol$ = MoneyMaskedTextController(
+    leftSymbol: "R\$",
+    precision: 2,
+    decimalSeparator: ",",
+    thousandSeparator: ".",
+  );
 
-  MaskedTextController consumoGasolina$ = MaskedTextController(mask: "0,0");
-  MaskedTextController consumoEtanol$ = MaskedTextController(mask: "0,0");
+  MoneyMaskedTextController consumoGasolina$ = MoneyMaskedTextController(
+    rightSymbol: " km/l",
+    precision: 1,
+  );
+  MoneyMaskedTextController consumoEtanol$ = MoneyMaskedTextController(
+    rightSymbol: " km/l",
+    precision: 1,
+  );
 
   FocusNode focusGasolina$ = FocusNode();
   FocusNode focusEtanol$ = FocusNode();
@@ -59,27 +74,32 @@ class HomeBloc extends BlocBase {
         double.parse(etanol$.text.replaceAll(",", ".").replaceAll("R\$", ""));
 
     if (mostrarConsumo$.value) {
-      consumoGasolina =
-          double.parse(consumoGasolina$.text.replaceAll(",", "."));
-      consumoEtanol = double.parse(consumoEtanol$.text.replaceAll(",", "."));
-      try {
-        referencia = consumoEtanol / consumoGasolina;
-        await localStorageService.setConsumoEtanol(consumoEtanol$.text);
-        await localStorageService.setConsumoGasolina(consumoGasolina$.text);
-      } catch (e) {
-        print(e);
+      consumoGasolina = double.parse(
+          consumoGasolina$.text.replaceAll(",", ".").replaceAll(" km/l", ""));
+      consumoEtanol = double.parse(
+          consumoEtanol$.text.replaceAll(",", ".").replaceAll(" km/l", ""));
+      if (consumoGasolina != 0.0 && consumoEtanol != 0.0) {
+        try {
+          referencia = consumoEtanol / consumoGasolina;
+          await localStorageService.setConsumoEtanol(consumoEtanol$.text);
+          await localStorageService.setConsumoGasolina(consumoGasolina$.text);
+        } catch (e) {
+          print(e);
+        }
       }
     }
 
-    try {
-      divisao = precoEtanol / precoGasolina;
-      if (divisao < referencia) {
-        resultado$.sink.add("Etanol");
-      } else {
-        resultado$.sink.add("Gasolina");
+    if (precoEtanol != 0.0 && precoGasolina != 0.0) {
+      try {
+        divisao = precoEtanol / precoGasolina;
+        if (divisao < referencia) {
+          resultado$.sink.add("Etanol");
+        } else {
+          resultado$.sink.add("Gasolina");
+        }
+      } catch (e) {
+        resultado$.sink.add(e);
       }
-    } catch (e) {
-      resultado$.sink.add(e);
     }
   }
 
