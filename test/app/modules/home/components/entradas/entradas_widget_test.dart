@@ -10,7 +10,7 @@ main() {
     await tester.pumpWidget(buildTestableWidget(EntradasWidget(
       combustivel: "Gasolina",
       cor: Colors.red,
-      controller: MaskedTextController(),
+      controller: MoneyMaskedTextController(),
       focusController: FocusNode(),
     )));
     final textFinder = find.text('Entradas');

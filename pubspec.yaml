@@ -17,14 +17,12 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  path_provider: ^1.5.1
-  hive: ^1.2.0
-  shared_preferences: ^0.5.6
-  google_fonts: ^0.2.0
+  path_provider: ^2.0.1
+  hive: ^2.0.4
+  google_fonts: ^2.0.0
   flutter_masked_text: ^0.8.0
-  dio: ^3.0.7
-  rxdart: ^0.23.1
-  bloc_pattern: ^2.5.1
+  rxdart: ^0.27.0
+  bloc_pattern: ^3.0.0
   flutter:
     sdk: flutter
 
