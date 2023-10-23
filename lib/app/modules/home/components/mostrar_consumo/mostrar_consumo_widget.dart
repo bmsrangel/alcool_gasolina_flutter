@@ -1,12 +1,12 @@
 import 'package:alcool_gasolina/app/modules/home/home_bloc.dart';
-import 'package:alcool_gasolina/app/modules/home/home_module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class MostrarConsumoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    HomeBloc bloc = HomeModule.to.bloc<HomeBloc>();
+    HomeBloc bloc = Modular.get<HomeBloc>();
 
     return Column(
       children: <Widget>[

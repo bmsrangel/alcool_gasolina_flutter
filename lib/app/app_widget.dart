@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:alcool_gasolina/app/modules/home/home_module.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Etanol ou Gasolina',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeModule(),
+      routerConfig: Modular.routerConfig,
     );
   }
 }

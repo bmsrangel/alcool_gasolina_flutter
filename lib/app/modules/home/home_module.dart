@@ -1,22 +1,20 @@
-import 'package:alcool_gasolina/app/app_module.dart';
 import 'package:alcool_gasolina/app/modules/home/home_bloc.dart';
-import 'package:alcool_gasolina/app/shared/services/local_storage_service.dart';
-import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:flutter/material.dart';
 import 'package:alcool_gasolina/app/modules/home/home_page.dart';
+import 'package:alcool_gasolina/app/shared/services/local_storage_service.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class HomeModule extends ModuleWidget {
+class HomeModule extends Module {
   @override
-  List<Bloc> get blocs => [
-        Bloc((i) => HomeBloc(
-            localStorageService: AppModule.to.get<LocalStorageService>())),
-      ];
+  void binds(Injector i) {
+    i.addSingleton(LocalStorageService.new);
+    i.addSingleton(HomeBloc.new);
+  }
 
   @override
-  List<Dependency> get dependencies => [];
-
-  @override
-  Widget get view => HomePage();
-
-  static Inject get to => Inject<HomeModule>.of();
+  void routes(RouteManager r) {
+    r.child(
+      Modular.initialRoute,
+      child: (_) => HomePage(),
+    );
+  }
 }

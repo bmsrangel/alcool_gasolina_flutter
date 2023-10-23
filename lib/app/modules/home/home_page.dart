@@ -1,8 +1,8 @@
 import 'package:alcool_gasolina/app/modules/home/components/entradas/entradas_widget.dart';
 import 'package:alcool_gasolina/app/modules/home/components/mostrar_consumo/mostrar_consumo_widget.dart';
 import 'package:alcool_gasolina/app/modules/home/home_bloc.dart';
-import 'package:alcool_gasolina/app/modules/home/home_module.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final HomeBloc bloc = HomeModule.to.bloc<HomeBloc>();
+  final HomeBloc bloc = Modular.get<HomeBloc>();
 
   @override
   Widget build(BuildContext context) {

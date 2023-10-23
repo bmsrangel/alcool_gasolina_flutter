@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-class LocalStorageService extends Disposable {
+class LocalStorageService {
   Completer<Box> completer = Completer<Box>();
 
   LocalStorageService() {
@@ -46,8 +45,4 @@ class LocalStorageService extends Disposable {
       return null;
     }
   }
-
-  //dispose will be called automatically
-  @override
-  void dispose() {}
 }

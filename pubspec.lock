@@ -9,14 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  bloc_pattern:
-    dependency: "direct main"
+  auto_injector:
+    dependency: transitive
     description:
-      name: bloc_pattern
-      sha256: "633169aa49de0c6c2494af00599c8a744db0317340c966bb81ce6eb1c4f80c20"
+      name: auto_injector
+      sha256: "2952a4d4339ed3b65e8e54765ec68ee6ada5cb21d83cb8d39e3f6b4e690ab5ca"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "2.0.2"
+  bloc:
+    dependency: transitive
+    description:
+      name: bloc
+      sha256: "3820f15f502372d979121de1f6b97bfcf1630ebff8fe1d52fb2b0bfa49be5b49"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.1.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -78,6 +86,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      sha256: e74efb89ee6945bcbce74a5b3a5a3376b088e5f21f55c263fc38cbdc6237faae
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.1.3"
   flutter_masked_text2:
     dependency: "direct main"
     description:
@@ -86,6 +102,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.1"
+  flutter_modular:
+    dependency: "direct main"
+    description:
+      name: flutter_modular
+      sha256: ac6298ce1abd414286ee5a554fc45e81e358461979b5d4e02c8abd685e3b23f2
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -147,6 +171,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  modular_core:
+    dependency: transitive
+    description:
+      name: modular_core
+      sha256: "5baaa460ac9d85d457d6864ef41a2194b8115a6bdeb585a684789f2d9004c892"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -219,6 +259,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+  provider:
+    dependency: transitive
+    description:
+      name: provider
+      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.5"
+  result_dart:
+    dependency: transitive
+    description:
+      name: result_dart
+      sha256: f28a171d55e2e1c1753b41d4d8edcaff886f103e73c575d14764913907e57928
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   rxdart:
     dependency: "direct main"
     description:
@@ -288,6 +344,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.7"
   vector_math:
     dependency: transitive
     description:

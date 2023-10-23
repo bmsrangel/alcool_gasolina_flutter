@@ -1,10 +1,15 @@
 import 'package:alcool_gasolina/app/shared/services/local_storage_service.dart';
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rxdart/rxdart.dart';
 
-class HomeBloc extends BlocBase {
+class HomeBloc extends Bloc implements Disposable {
+  HomeBloc({required this.localStorageService}) : super(null) {
+    _init();
+  }
+
   final LocalStorageService localStorageService;
 
   MoneyMaskedTextController gasolina$ = MoneyMaskedTextController(
@@ -41,10 +46,6 @@ class HomeBloc extends BlocBase {
   BehaviorSubject<bool> mostrarConsumo$ = BehaviorSubject<bool>.seeded(false);
   Sink<bool> get inMostrarConsumo => mostrarConsumo$.sink;
   Stream<bool> get outMostrarConsumo => mostrarConsumo$.stream;
-
-  HomeBloc({required this.localStorageService}) {
-    _init();
-  }
 
   _init() async {
     String? consumoEtanol = await localStorageService.getConsumoEtanol();
@@ -108,6 +109,5 @@ class HomeBloc extends BlocBase {
   void dispose() {
     resultado$.close();
     mostrarConsumo$.close();
-    super.dispose();
   }
 }
