@@ -1,7 +1,7 @@
 import 'package:alcool_gasolina/app/modules/home/home_bloc.dart';
 import 'package:alcool_gasolina/app/modules/home/home_module.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class MostrarConsumoWidget extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class MostrarConsumoWidget extends StatelessWidget {
               initialData: false,
               builder: (_, snapshot) {
                 return Switch(
-                  value: snapshot.data,
+                  value: snapshot.data ?? false,
                   onChanged: (bool value) {
                     bloc.inMostrarConsumo.add(value);
                   },
@@ -32,7 +32,7 @@ class MostrarConsumoWidget extends StatelessWidget {
           initialData: false,
           stream: bloc.outMostrarConsumo,
           builder: (_, snapshot) {
-            return snapshot.data ? consumo(bloc) : Container();
+            return snapshot.data ?? false ? consumo(bloc) : Container();
           },
         )
       ],
@@ -51,10 +51,11 @@ class MostrarConsumoWidget extends StatelessWidget {
   }
 
   Widget entradasConsumo(
-      String combustivel,
-      MoneyMaskedTextController controller,
-      FocusNode focusController,
-      Color cor) {
+    String combustivel,
+    MoneyMaskedTextController controller,
+    FocusNode focusController,
+    Color cor,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(

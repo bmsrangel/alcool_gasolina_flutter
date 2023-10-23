@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const HomePage({Key? key, this.title = "Home"}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -73,8 +73,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: 15),
                     MostrarConsumoWidget(),
                     SizedBox(height: 15),
-                    RaisedButton(
-                      color: Colors.blue,
+                    ElevatedButton(
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         height: 50,
@@ -97,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                           stream: bloc.outResultado,
                           builder: (_, snapshot) {
                             if (snapshot.hasData) {
-                              String resultado = snapshot.data;
+                              String resultado = snapshot.data!;
                               Color corContainer;
                               if (resultado == "Gasolina") {
                                 corContainer = Colors.red;
@@ -112,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 200,
                                 alignment: Alignment.center,
                                 child: Text(
-                                  snapshot.data,
+                                  snapshot.data!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 22,
@@ -122,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               );
                             } else {
-                              return null;
+                              return SizedBox.shrink();
                             }
                           },
                         ),

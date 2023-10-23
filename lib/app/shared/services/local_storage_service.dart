@@ -28,7 +28,7 @@ class LocalStorageService extends Disposable {
     await box.put("consumoGasolina", consumoGasolina);
   }
 
-  Future<String> getConsumoEtanol() async {
+  Future<String?> getConsumoEtanol() async {
     final box = await completer.future;
     try {
       return box.get("consumoEtanol");
@@ -38,7 +38,7 @@ class LocalStorageService extends Disposable {
     }
   }
 
-  Future<String> getConsumoGasolina() async {
+  Future<String?> getConsumoGasolina() async {
     final box = await completer.future;
     try {
       return box.get("consumoGasolina");
